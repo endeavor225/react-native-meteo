@@ -1,4 +1,3 @@
-
 import { StyleSheet } from "react-native";
 
 const s = StyleSheet.create({
@@ -17,6 +16,10 @@ const s = StyleSheet.create({
   },
   date: {
     fontSize: 20,
+  },
+  temperature: {
+    width: 60,
+    textAlign: "right",
   },
 });
 
