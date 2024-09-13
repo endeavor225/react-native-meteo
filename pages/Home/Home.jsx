@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 import { MeteoAPI } from "../../api/meteo";
 import { Txt } from "../../components/Txt/Txt";
 import { MeteoBasic } from "../../components/MeteoBasic/MeteoBasic";
+import { getWeatherInterpretation } from "../../services/meteo-service";
 
 
 export function Home({}) {
     const [coords, setCoords] = useState()
     const [weather, setWeather] = useState();
+    const currentWeather = weather?.current_weather;
 
     useEffect(() => {
         getUserCoords()
@@ -43,14 +45,20 @@ export function Home({}) {
 
     console.log(weather);
     
-    return (
+    return currentWeather ? (
         <>
         <View style={s.meteo_basic}>
-          <MeteoBasic />
+          <MeteoBasic 
+            temperature={Math.round(currentWeather?.temperature)}
+            city="Todo"
+            interpretation={getWeatherInterpretation(
+              currentWeather.weathercode
+            )}
+          />
         </View>
 
         <View style={s.searchbar_container}></View>
         <View style={s.meteo_advanced}></View>
         </>
-    );
+    ) : null;
 }
