@@ -3,6 +3,7 @@ import { s } from "./Home.style";
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync } from "expo-location";
 import { useEffect, useState } from "react";
 import { MeteoAPI } from "../../api/meteo";
+import { Txt } from "../../components/Txt/Txt";
 
 
 export function Home({}) {
@@ -44,7 +45,7 @@ export function Home({}) {
     return (
         <>
         <View style={s.meteo_basic}>
-            <Text style={{ fontSize: 60, color: "white" }}>Hello</Text>
+          <Txt style={{ fontSize: 60 }}>Hello</Txt>
         </View>
         <View style={s.searchbar_container}></View>
         <View style={s.meteo_advanced}></View>
